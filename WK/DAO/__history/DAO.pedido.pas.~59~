@@ -1,0 +1,121 @@
+unit DAO.pedido;
+
+interface
+
+uses
+  Data.FMTBcd, Data.DB, Data.SqlExpr, Produto, Pedido;
+
+type
+  TDAOPedido = class
+    FQuery : TSQLQuery;
+  private
+  public
+    constructor create;
+    destructor destroy;
+    function buscar(numero_pedido:string; out erro : string; out pedido : TPedido) : Boolean;
+    function salvar(out erro : string; out pedido : TPedido) : Boolean;
+    function excluir(numero_pedido : string; out erro : string;) : Boolean;
+  end;
+
+implementation
+
+uses
+  System.SysUtils, uModuloConexao;
+
+{ TDAOProduto }
+
+function TDAOPedido.buscar(numero_pedido: string; out erro: string;
+  out pedido : TPedido): Boolean;
+begin
+  result := true;
+  FQuery.Close;
+  FQuery.SQL.Clear;
+  FQuery.SQL.Add(' SELECT P.* FROM PEDIDO P ');
+  FQuery.SQL.Add(' INNER JOIN CLIENTE C ON C.CODIGO = P.CODIGO_CLIENTE ');
+
+  if numero_pedido <> '' then
+  begin
+    FQuery.SQL.Add(' WHERE NUMERO_PEDIDO = '''+numero_pedido+''' ');
+  end;
+
+  try
+    FQuery.Open;
+    if (FQuery.IsEmpty) then
+      raise Exception.Create('Nenhum produto encontrado! Codigo: '+numero_pedido);
+
+    pedido.numero_pedido := FQuery.FieldByName('NUMERO_PEDIDO').AsInteger;
+    pedido.codigo_cliente := FQuery.FieldByName('CODIGO_CLIENTE').AsInteger;
+    pedido.data_emissao := FQuery.FieldByName('EMISSAO').AsDateTime;
+    pedido.valor_total := FQuery.FieldByName('VALOR_TOTAL').AsCurrency;
+  except
+    on e:exception do
+    begin
+      erro := e.Message;
+      result := False;
+    end;
+  end;
+end;
+
+constructor TDAOPedido.create;
+begin
+  FQuery := TSQLQuery.Create(nil);
+  FQuery.SQLConnection := moduloConexao.conexao;
+  FQuery.Close;
+  FQuery.SQL.Clear;
+end;
+
+destructor TDAOPedido.destroy;
+begin
+  FQuery.Free;
+end;
+
+function TDAOPedido.excluir(numero_pedido: string; out erro: string): Boolean;
+begin
+
+end;
+
+function TDAOPedido.salvar(out erro: string; out pedido: TPedido): Boolean;
+begin
+  result := true;
+
+  FQuery.Close;
+  FQuery.SQL.Clear;
+  if pedido.numero_pedido = 0 then
+  begin
+    FQuery.SQL.Text := ' SELECT max(numero_pedido) numero_pedido from pedido';
+    FQuery.Open;
+
+    pedido.numero_pedido := FQuery.FieldByName('numero_pedido').AsInteger+1;
+
+    FQuery.Close;
+    FQuery.SQL.Clear;
+
+    FQuery.SQL.Add(' INSERT INTO PEDIDO ');
+    FQuery.SQL.Add(' (NUMERO_PEDIDO, CODIGO_CLIENTE, EMISSAO) ');
+    FQuery.SQL.Add(' VALUES(:NUMERO_PEDIDO, :CODIGO_CLIENTE, :DATA_EMISSAO) ');
+
+    FQuery.ParamByName('CODIGO_CLIENTE').AsInteger := pedido.codigo_cliente;
+    FQuery.ParamByName('DATA_EMISSAO').AsDateTime := Now();
+  end
+  else
+  begin
+    FQuery.SQL.Add(' UPDATE PEDIDO SET ');
+    FQuery.SQL.Add(' CODIGO_CLIENTE = :CODIGO_CLIENTE ');
+    FQuery.SQL.Add(' WHERE NUMERO_PEDIDO = :NUMERO_PEDIDO');
+
+    FQuery.ParamByName('CODIGO_CLIENTE').AsInteger := pedido.codigo_cliente;
+  end;
+
+  try
+    FQuery.ParamByName('NUMERO_PEDIDO').AsInteger := pedido.numero_pedido;
+    FQuery.ExecSQL();
+  except
+    on e:exception do
+    begin
+      erro := e.Message;
+      result := False;
+    end;
+  end;
+end;
+
+end.

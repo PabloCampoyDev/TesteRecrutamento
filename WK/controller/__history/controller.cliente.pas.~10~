@@ -1,0 +1,38 @@
+unit controller.cliente;
+
+interface
+
+uses
+  Cliente, DAO.cliente;
+
+type
+  TControllerCliente = class
+  private
+    DAO : TDAOCliente;
+  public
+    constructor create;
+    function buscar(codigo:string; out erro : string) : Boolean;
+    function salvar(objectCliente : TCliente; out erro : string) : Boolean;
+  end;
+
+implementation
+
+{ TControllerCliente }
+
+function TControllerCliente.buscar(codigo: string; out erro: string): Boolean;
+begin
+  DAO.buscar(codigo, erro);
+end;
+
+constructor TControllerCliente.create;
+begin
+  DAO := TDAOCliente.Create;
+end;
+
+function TControllerCliente.salvar(objectCliente: TCliente;
+  out erro: string): Boolean;
+begin
+
+end;
+
+end.

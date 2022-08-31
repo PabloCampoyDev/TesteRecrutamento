@@ -1,0 +1,43 @@
+unit Cliente;
+
+interface
+
+type
+  TCliente = class
+    private
+      FUf: string;
+      FCodigo: integer;
+      FNome: string;
+      FCidade: string;
+    published
+    public
+      property codigo : integer read FCodigo write FCodigo;
+      property nome : string read FNome write FNome;
+      property cidade : string read FCidade write FCidade;
+      property uf : string read FUf write FUf;
+      constructor Create;
+      destructor Destroy;
+      class function novoCliente(nome, cidade, uf : string) : TCliente;
+  end;
+
+implementation
+
+{ TCliente }
+
+constructor TCliente.Create;
+begin
+
+end;
+
+destructor TCliente.Destroy;
+begin
+
+end;
+
+class function TCliente.novoCliente(nome, cidade, uf: string): TCliente;
+begin
+  result := Self.Create;
+  Self.nome :=
+end;
+
+end.

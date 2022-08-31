@@ -1,0 +1,25 @@
+unit uModulo;
+
+interface
+
+uses
+  System.SysUtils, System.Classes;
+
+type
+  Tmodulo = class(TDataModule)
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  modulo: Tmodulo;
+
+implementation
+
+{%CLASSGROUP 'Vcl.Controls.TControl'}
+
+{$R *.dfm}
+
+end.

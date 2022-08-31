@@ -1,0 +1,5 @@
+object modulo: Tmodulo
+  OldCreateOrder = False
+  Height = 217
+  Width = 347
+end

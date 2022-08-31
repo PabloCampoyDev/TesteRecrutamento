@@ -1,0 +1,38 @@
+unit controller.produto;
+
+interface
+
+uses
+  DAO.produto, Produto;
+
+type
+  TControllerProduto = class
+  private
+    DAO : TDAOProduto;
+  public
+    constructor create;
+    destructor destroy;
+    function buscar(codigo:string; out erro : string; out produto : TProduto) : Boolean;
+  end;
+
+implementation
+
+{ TControllerProduto }
+
+function TControllerProduto.buscar(codigo: string; out erro: string;
+  out produto: TProduto): Boolean;
+begin
+  result := DAO.buscar(codigo, erro, produto);
+end;
+
+constructor TControllerProduto.create;
+begin
+
+end;
+
+destructor TControllerProduto.destroy;
+begin
+
+end;
+
+end.

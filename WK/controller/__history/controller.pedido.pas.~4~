@@ -1,0 +1,38 @@
+unit controller.pedido;
+
+interface
+
+uses
+  DAO.pedido, Pedido;
+
+type
+  TControllerPedido = class
+  private
+    DAO : TDAOPedido;
+  public
+    constructor create;
+    destructor destroy;
+    function buscar(codigo:string; out erro : string; out pedido : TPedido) : Boolean;
+  end;
+
+implementation
+
+{ TControllerProduto }
+
+function TControllerPedido.buscar(codigo: string; out erro: string;
+  out pedido : TPedido): Boolean;
+begin
+  result := DAO.buscar(codigo, erro, pedido);
+end;
+
+constructor TControllerPedido.create;
+begin
+  DAO := TDAOPedido.Create;
+end;
+
+destructor TControllerPedido.destroy;
+begin
+  DAO.Free;
+end;
+
+end.

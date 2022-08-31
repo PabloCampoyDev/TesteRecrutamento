@@ -1,0 +1,155 @@
+unit DAO.Itens;
+
+interface
+
+uses
+  Data.FMTBcd, Data.DB, Data.SqlExpr, Itens, Datasnap.DBClient;
+
+type
+  TDAOItens = class
+    FQuery : TSQLQuery;
+  private
+  public
+    constructor create;
+    destructor destroy;
+    function buscar(numero_pedido:string; out erro : string; out itens : TItens) : Boolean;
+    function salvar(out erro : string; out itens : TItens) : Boolean;
+    function listarItens(numero_pedido : string; out erro : string; out dataSet : TClientDataSet) : Boolean;
+  end;
+
+implementation
+
+uses
+  System.SysUtils, uModuloConexao;
+
+{ TDAOItens }
+
+function TDAOItens.buscar(numero_pedido: string; out erro: string;
+  out itens : TItens): Boolean;
+begin
+  result := true;
+  FQuery.SQL.Add(' SELECT * FROM PEDIDO_PRODUTOS ');
+
+  if numero_pedido <> '' then
+  begin
+    FQuery.SQL.Add(' WHERE NUMERO_PEDIDO = '''+numero_pedido+''' ');
+  end;
+
+  try
+    FQuery.Open;
+    if (FQuery.IsEmpty) then
+      raise Exception.Create('Nenhum item encontrado! Codigo: '+numero_pedido);
+  except
+    on e:exception do
+    begin
+      erro := e.Message;
+      result := False;
+    end;
+  end;
+end;
+
+constructor TDAOItens.create;
+begin
+  FQuery := TSQLQuery.Create(nil);
+  FQuery.SQLConnection := moduloConexao.conexao;
+  FQuery.Close;
+  FQuery.SQL.Clear;
+end;
+
+destructor TDAOItens.destroy;
+begin
+  FQuery.Free;
+end;
+
+function TDAOItens.listarItens(numero_pedido: string; out erro: string;
+  out dataSet: TClientDataSet): Boolean;
+begin
+  result := true;
+  FQuery.Close;
+  FQuery.SQL.Clear;
+  FQuery.SQL.Add(' SELECT PP.*, P.DESCRICAO ');
+  FQuery.SQL.Add(' FROM PEDIDO_PRODUTOS PP ');
+  FQuery.SQL.Add(' INNER JOIN PRODUTOS P ON P.CODIGO = PP.CODIGO_PRODUTO ');
+
+  if numero_pedido <> '' then
+  begin
+    FQuery.SQL.Add(' WHERE NUMERO_PEDIDO = '''+numero_pedido+''' ');
+  end;
+
+  try
+    FQuery.Open;
+    if (FQuery.IsEmpty) then
+      raise Exception.Create('Nenhum item encontrado! Codigo: '+numero_pedido);
+
+    dataSt.EmptyDataSet;
+    dataSet.Close;
+
+    dataSet.Open;
+    FQuery.First;
+    while not FQuery.Eof do
+    begin
+      dataSet.Append;
+      dataSet.FieldByName('CODIGO').AsInteger := FQuery.FieldByName('CODIGO').AsInteger;
+      dataSet.FieldByName('DESCRICAO').AsString := FQuery.FieldByName('DESCRICAO').AsString;
+      dataSet.FieldByName('QUANTIDADE').AsCurrency := FQuery.FieldByName('QUANTIDADE').AsCurrency;
+      dataSet.FieldByName('VALOR_UNITARIO').AsCurrency := FQuery.FieldByName('VALOR_UNITARIO').AsCurrency;
+      dataSet.FieldByName('VALOR_TOTAL').AsCurrency := FQuery.FieldByName('VALOR_TOTAL').AsCurrency;
+      dataSet.Post;
+
+      FQuery.Next;
+    end;
+
+  except
+    on e:exception do
+    begin
+      erro := e.Message;
+      result := False;
+    end;
+  end;
+end;
+
+function TDAOItens.salvar(out erro: string; out itens: TItens): Boolean;
+begin
+  result := true;
+  if itens.codigo = 0 then
+  begin
+    FQuery.SQL.Add(' INSERT INTO PEDIDO_PRODUTOS ');
+    FQuery.SQL.Add(' (NUMERO_PEDIDO, CODIGO_PRODUTO, QUANTIDADE, VALOR_UNITARIO, VALOR_TOTAL) ');
+    FQuery.SQL.Add(' VALUES(:NUMERO_PEDIDO, :CODIGO_PRODUTO, :QUANTIDADE, :VALOR_UNITARIO, :VALOR_TOTAL) ');
+
+    FQuery.ParamByName('NUMERO_PEDIDO').AsInteger := itens.numero_pedido;
+    FQuery.ParamByName('CODIGO_PRODUTO').AsInteger := itens.codigo_produto;
+
+  end
+  else
+  begin
+    FQuery.SQL.Add(' UPDATE PEDIDOS SET ');
+    FQuery.SQL.Add(' QUANTIDADE = :QUANTIDADE, ');
+    FQuery.SQL.Add(' VALOR_UNITARIO = :VALOR_UNITARIO, ');
+    FQuery.SQL.Add(' VALOR_TOTAL = :VALOR_TOTAL ');
+    FQuery.SQL.Add(' WHERE NUMERO_PEDIDO = :NUMERO_PEDIDO');
+
+    FQuery.ParamByName('NUMERO_PEDIDO').AsInteger := itens.numero_pedido;
+  end;
+
+  FQuery.ParamByName('QUANTIDADE').AsCurrency := itens.quantidade;
+  FQuery.ParamByName('VALOR_UNITARIO').AsCurrency := itens.valor_unitario;
+  FQuery.ParamByName('VALOR_TOTAL').AsCurrency := itens.valor_total;
+
+  try
+    FQuery.SQL.Add(' RETURNING NUMERO_PEDIDO ');
+    FQuery.ExecSQL();
+
+    FQuery.Close;
+    FQuery.SQL.Clear;
+    result := buscar(itens.numero_pedido.ToString, erro, itens);
+  except
+    on e:exception do
+    begin
+      erro := e.Message;
+      result := False;
+    end;
+  end;
+end;
+
+end.

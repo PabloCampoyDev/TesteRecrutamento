@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2022/06/28 09:15:53.000.965,=D:\Dados\Documents\Embarcadero\Studio\Projects\Unit5.pas</Transaction>
+    <Transaction>2022/08/29 17:12:14.004,=D:\Dados\Documents\Embarcadero\Studio\Projects\Unit5.pas</Transaction>
+    <Transaction>2022/08/29 17:13:21.574,D:\Dados\Documents\GestaoTec\Testes\Cursos\WK\view\uFrmPedido.dfm=D:\Dados\Documents\Embarcadero\Studio\Projects\Unit5.dfm</Transaction>
+    <Transaction>2022/08/29 17:13:21.574,D:\Dados\Documents\GestaoTec\Testes\Cursos\WK\view\uFrmPedido.pas=D:\Dados\Documents\Embarcadero\Studio\Projects\Unit5.pas</Transaction>
+    <Transaction>2022/08/29 17:13:47.082,D:\Dados\Documents\GestaoTec\Testes\Cursos\WK\WkTecnology.dproj=D:\Dados\Documents\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+    <Transaction>2022/08/29 17:49:38.987,=D:\Dados\Documents\GestaoTec\Testes\Cursos\WK\Unit1.pas</Transaction>
+    <Transaction>2022/08/29 17:49:53.944,D:\Dados\Documents\GestaoTec\Testes\Cursos\WK\entity\cliente.pas=D:\Dados\Documents\GestaoTec\Testes\Cursos\WK\Unit1.pas</Transaction>
+    <Transaction>2022/08/29 17:50:06.213,D:\Dados\Documents\GestaoTec\Testes\Cursos\WK\entity\cliente.pas=</Transaction>
+    <Transaction>2022/08/29 17:50:10.678,=D:\Dados\Documents\GestaoTec\Testes\Cursos\WK\Unit1.pas</Transaction>
+    <Transaction>2022/08/29 17:50:22.475,D:\Dados\Documents\GestaoTec\Testes\Cursos\WK\entity\Cliente.pas=D:\Dados\Documents\GestaoTec\Testes\Cursos\WK\Unit1.pas</Transaction>
+    <Transaction>2022/08/29 18:23:03.900,=D:\Dados\Documents\GestaoTec\Testes\Cursos\WK\model\Cliente.pas</Transaction>
+    <Transaction>2022/08/29 18:27:01.230,=D:\Dados\Documents\GestaoTec\Testes\Cursos\WK\Unit1.pas</Transaction>
+    <Transaction>2022/08/29 18:27:23.441,D:\Dados\Documents\GestaoTec\Testes\Cursos\WK\controller\controller.cliente.pas=D:\Dados\Documents\GestaoTec\Testes\Cursos\WK\Unit1.pas</Transaction>
+    <Transaction>2022/08/29 18:35:29.081,=D:\Dados\Documents\GestaoTec\Testes\Cursos\WK\Unit1.pas</Transaction>
+    <Transaction>2022/08/29 18:37:01.484,D:\Dados\Documents\GestaoTec\Testes\Cursos\WK\DAO\uModulo.dfm=D:\Dados\Documents\GestaoTec\Testes\Cursos\WK\Unit1.dfm</Transaction>
+    <Transaction>2022/08/29 18:37:01.484,D:\Dados\Documents\GestaoTec\Testes\Cursos\WK\DAO\uModulo.pas=D:\Dados\Documents\GestaoTec\Testes\Cursos\WK\Unit1.pas</Transaction>
+    <Transaction>2022/08/30 09:59:56.685,D:\Dados\Documents\GestaoTec\Testes\Cursos\WK\DAO\uModulo.pas=</Transaction>
+    <Transaction>2022/08/30 10:00:03.648,=D:\Dados\Documents\GestaoTec\Testes\Cursos\WK\Unit1.pas</Transaction>
+    <Transaction>2022/08/30 10:00:18.365,D:\Dados\Documents\GestaoTec\Testes\Cursos\WK\DAO\DAO.cliente.pas=D:\Dados\Documents\GestaoTec\Testes\Cursos\WK\Unit1.pas</Transaction>
+    <Transaction>2022/08/30 10:14:05.370,=D:\Dados\Documents\GestaoTec\Testes\Cursos\WK\Unit1.pas</Transaction>
+    <Transaction>2022/08/30 10:15:52.930,=D:\Dados\Documents\GestaoTec\Testes\Cursos\WK\Unit1.pas</Transaction>
+    <Transaction>2022/08/30 10:17:18.576,D:\Dados\Documents\GestaoTec\Testes\Cursos\WK\DAO\uModuloConexao.dfm=D:\Dados\Documents\GestaoTec\Testes\Cursos\WK\Unit1.dfm</Transaction>
+    <Transaction>2022/08/30 10:17:18.576,D:\Dados\Documents\GestaoTec\Testes\Cursos\WK\DAO\uModuloConexao.pas=D:\Dados\Documents\GestaoTec\Testes\Cursos\WK\Unit1.pas</Transaction>
+    <Transaction>2022/08/30 11:14:10.885,=D:\Dados\Documents\GestaoTec\Testes\Cursos\WK\Unit1.pas</Transaction>
+    <Transaction>2022/08/30 11:14:23.789,D:\Dados\Documents\GestaoTec\Testes\Cursos\WK\controller\controller.produto.pas=D:\Dados\Documents\GestaoTec\Testes\Cursos\WK\Unit1.pas</Transaction>
+    <Transaction>2022/08/30 11:16:00.385,=D:\Dados\Documents\GestaoTec\Testes\Cursos\WK\Unit1.pas</Transaction>
+    <Transaction>2022/08/30 11:16:18.329,D:\Dados\Documents\GestaoTec\Testes\Cursos\WK\model\Produto.pas=D:\Dados\Documents\GestaoTec\Testes\Cursos\WK\Unit1.pas</Transaction>
+    <Transaction>2022/08/30 11:20:34.488,=D:\Dados\Documents\GestaoTec\Testes\Cursos\WK\Unit1.pas</Transaction>
+    <Transaction>2022/08/30 11:20:42.829,D:\Dados\Documents\GestaoTec\Testes\Cursos\WK\DAO\DAO.produto.pas=D:\Dados\Documents\GestaoTec\Testes\Cursos\WK\Unit1.pas</Transaction>
+    <Transaction>2022/08/30 14:00:43.099,=D:\Dados\Documents\GestaoTec\Testes\Cursos\WK\Unit1.pas</Transaction>
+    <Transaction>2022/08/30 14:00:52.159,D:\Dados\Documents\GestaoTec\Testes\Cursos\WK\model\Pedido.pas=D:\Dados\Documents\GestaoTec\Testes\Cursos\WK\Unit1.pas</Transaction>
+    <Transaction>2022/08/30 14:03:15.345,=D:\Dados\Documents\GestaoTec\Testes\Cursos\WK\Unit1.pas</Transaction>
+    <Transaction>2022/08/30 14:03:26.330,D:\Dados\Documents\GestaoTec\Testes\Cursos\WK\controller\controller.pedido.pas=D:\Dados\Documents\GestaoTec\Testes\Cursos\WK\Unit1.pas</Transaction>
+    <Transaction>2022/08/30 14:04:24.905,=D:\Dados\Documents\GestaoTec\Testes\Cursos\WK\Unit1.pas</Transaction>
+    <Transaction>2022/08/30 14:04:34.899,D:\Dados\Documents\GestaoTec\Testes\Cursos\WK\DAO\DAO.pedido.pas=D:\Dados\Documents\GestaoTec\Testes\Cursos\WK\Unit1.pas</Transaction>
+    <Transaction>2022/08/30 15:28:01.701,=D:\Dados\Documents\GestaoTec\Testes\Cursos\WK\Unit1.pas</Transaction>
+    <Transaction>2022/08/30 15:28:21.059,D:\Dados\Documents\GestaoTec\Testes\Cursos\WK\model\Itens.pas=D:\Dados\Documents\GestaoTec\Testes\Cursos\WK\Unit1.pas</Transaction>
+    <Transaction>2022/08/30 15:30:57.786,=D:\Dados\Documents\GestaoTec\Testes\Cursos\WK\Unit1.pas</Transaction>
+    <Transaction>2022/08/30 15:31:23.643,D:\Dados\Documents\GestaoTec\Testes\Cursos\WK\DAO\DAO.Itens.pas=D:\Dados\Documents\GestaoTec\Testes\Cursos\WK\Unit1.pas</Transaction>
+    <Transaction>2022/08/30 15:32:54.824,=D:\Dados\Documents\GestaoTec\Testes\Cursos\WK\Unit1.pas</Transaction>
+    <Transaction>2022/08/30 15:33:05.263,D:\Dados\Documents\GestaoTec\Testes\Cursos\WK\controller\controller.itens.pas=D:\Dados\Documents\GestaoTec\Testes\Cursos\WK\Unit1.pas</Transaction>
+  </Transactions>
+</BorlandProject>

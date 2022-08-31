@@ -1,0 +1,26 @@
+unit uModuloConexao;
+
+interface
+
+uses
+  System.SysUtils, System.Classes, Data.DBXFirebird, Data.DB, Data.SqlExpr;
+
+type
+  TmoduloConexao = class(TDataModule)
+    SQLConnection1: TSQLConnection;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  moduloConexao: TmoduloConexao;
+
+implementation
+
+{%CLASSGROUP 'Vcl.Controls.TControl'}
+
+{$R *.dfm}
+
+end.

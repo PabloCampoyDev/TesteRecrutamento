@@ -1,0 +1,32 @@
+unit controller.cliente;
+
+interface
+
+uses
+  Cliente;
+
+type
+  TControllerCliente = class
+
+  public
+    function buscar(codigo:string; out erro : string) : Boolean;
+    function salvar(objectCliente : TCliente; out erro : string) : Boolean;
+
+  end;
+
+implementation
+
+{ TControllerCliente }
+
+function TControllerCliente.buscar(codigo: string; out erro: string): Boolean;
+begin
+
+end;
+
+function TControllerCliente.salvar(objectCliente: TCliente;
+  out erro: string): Boolean;
+begin
+
+end;
+
+end.
